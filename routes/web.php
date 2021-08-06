@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware'=>'auth','namespace'=>'App\Http\Controllers'],function(){
+    Route::resource('usuarios','UsersController');
+    Route::resource('proveedores','ProveedoresController');
+    Route::resource('tiendas','TiendasController');
+    Route::resource('ventas','VentasController');
+    Route::resource('productos','ProductosController');
+   
+});
 
 Route::get('/', function () {
     return view('welcome');
