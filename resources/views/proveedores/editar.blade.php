@@ -18,18 +18,21 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action ="/proveedores/{{$proveedor->id}}">
+                    @csrf
+                    @method('put')
+
                         <div class="form-group">
                           <label for="nombres">Nombres</label>
-                          <input type="text" class="form-control" id="nombres" name="nombres">
+                          <input value="{{$proveedor->nombres}}" type="text" class="form-control" id="nombres" name="nombres">
                         </div>
                         <div class="form-group">
                             <label for="nombres">Nit</label>
-                            <input type="text" class="form-control" id="nit" name="nit">
+                            <input value="{{$proveedor->nit}}" type="text" class="form-control" id="nit" name="nit">
                           </div>
                           <div class="form-group">
                             <label for="nombres">Telefono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono">
+                            <input value="{{$proveedor->telefono}}" type="text" class="form-control" id="telefono" name="telefono">
                           </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
