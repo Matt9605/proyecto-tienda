@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -13,7 +13,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //
+        $producto = Productos::all();
+       
+        return view('productos.listar');
+ //
     }
 
     /**
@@ -23,6 +26,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
+        return view('productos.crear');
         //
     }
 
@@ -34,6 +38,9 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+      $producto=new Productos($request->all());
+      $producto->save();
+      return redirect()->back();
         //
     }
 
@@ -56,7 +63,10 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Productos::find($id);
+       
+        return view('productos.editar',compact($producto));
+   //
     }
 
     /**
@@ -68,7 +78,11 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Productos::find($id);
+        $producto->fill($request->all());
+        $producto->save();
+        return redirect()->back();
+ //
     }
 
     /**
@@ -79,6 +93,10 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Productos::find($id);
+        $producto->delete();
+       
+        return redirect()->back();
+  //
     }
 }
