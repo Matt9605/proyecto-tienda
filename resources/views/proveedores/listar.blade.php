@@ -18,7 +18,39 @@
                 </div>
 
                 <div class="card-body">
+                <table>
+                        <thead>
+                            <th>
+                                Nombres
+                            </th>
+                            <th>
+                                Nit
+                            </th>
+                            <th>
+                                Teléfono
+                            </th>
+                        </thead>
+                        <tbody>
+                            @foreach($proveedores as $key => $proveedor)
+                            <tr>
+                                <td>
+                                    {{$proveedor->nombres}}
+                                </td>
+                                <td>
+                                    {{$proveedor->nit}}
+                                </td>
+                                <td>
+                                    {{$proveedor->telefono}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="/proveedores/{{$proveedor->id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" href="/proveedores/{{$proveedor->id}}/eliminar">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
                     
+                    </table>   
                    
                 </div>
             </div>

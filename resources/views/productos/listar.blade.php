@@ -18,7 +18,39 @@
                 </div>
 
                 <div class="card-body">
+                <table>
+                        <thead>
+                            <th>
+                                Marca
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Stock
+                            </th>
+                        </thead>
+                        <tbody>
+                            @foreach($productos as $key => $productos)
+                            <tr>
+                                <td>
+                                    {{$productos->marca}}
+                                </td>
+                                <td>
+                                    {{$productos->precio}}
+                                </td>
+                                <td>
+                                    {{$productos->stock}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="/productos/{{$productos->id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" href="/productos/{{$productos->id}}/eliminar">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
                     
+                    </table>
                    
                 </div>
             </div>

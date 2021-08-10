@@ -8,18 +8,21 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                <form>
+                <form method="POST" action ="/tienda/{{$tienda->id}}">
+                @csrf
+                    @method('put')
+
   <div class="form-group">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" id="nombre" name="nombre">
+    <input value="{{$tienda->nombre}}" type="text" class="form-control" id="nombre" name="nombre">
     </div>
   <div class="form-group">
     <label for="direccion">Direccion</label>
-    <input type="text" class="form-control" id="direccion" name="direccion">
+    <input value="{{$tienda->direccion}}" type="text" class="form-control" id="direccion" name="direccion">
   </div>
  <div class="form-group">
     <label for="direccion">Teléfono</label>
-    <input type="text" class="form-control" id="telefono" name="telefono">
+    <input value="{{$tienda->telefono}}" type="text" class="form-control" id="telefono" name="telefono">
   </div>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

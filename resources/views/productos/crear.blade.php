@@ -18,7 +18,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form  method="POST" action ="/productos">
+                    @csrf
                         <div class="form-group">
                           <label for="marca">Marca</label>
                           <input type="text" class="form-control" id="marca" name="marca">
