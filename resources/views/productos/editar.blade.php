@@ -18,18 +18,18 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action ="/productos/{{$productos->id}}">
                         <div class="form-group">
                           <label for="marca">Marca</label>
-                          <input type="text" class="form-control" id="marca" name="marca">
+                          <input value="{{$productos->marca}}" type="text" class="form-control" id="marca" name="marca">
                         </div>
                         <div class="form-group">
                             <label for="precio">Precio</label>
-                            <input type="text" class="form-control" id="precio" name="precio">
+                            <input value="{{$productos->precio}}" type="text" class="form-control" id="precio" name="precio">
                           </div>
                           <div class="form-group">
                             <label for="stock">Stock</label>
-                            <input type="text" class="form-control" id="stock" name="stock">
+                            <input value="{{$productos->stock}}" type="text" class="form-control" id="stock" name="stock">
                           </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                       </form>

@@ -18,7 +18,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action ="/proveedores">
+                    @csrf 
+
                         <div class="form-group">
                           <label for="nombres">Nombres</label>
                           <input type="text" class="form-control" id="nombres" name="nombres">
