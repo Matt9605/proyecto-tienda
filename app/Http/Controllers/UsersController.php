@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+namespace App\Http\Controllers;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+       
+        return view('user.listar');
+ //
     }
 
     /**
@@ -23,6 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        return view('user.crear');
         //
     }
 
@@ -34,6 +39,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $user=new User($request->all());
+        $user->save();
+      return redirect()->back();
         //
     }
 
@@ -56,7 +64,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+       
+        return view('user.editar',compact($user));
+   //
     }
 
     /**
@@ -68,7 +79,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        return redirect()->back();
+ //
     }
 
     /**
@@ -79,6 +94,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+       
+        return redirect()->back();
+  //
     }
 }

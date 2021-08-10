@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Proveedores;
 use Illuminate\Http\Request;
 
 class ProveedoresController extends Controller
@@ -13,7 +13,10 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        //
+        $proveedor = Proveedores::all();
+       
+        return view('proveedores.listar');
+ //
     }
 
     /**
@@ -23,6 +26,7 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
+        return view('proveedores.crear');
         //
     }
 
@@ -34,6 +38,9 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
+      $proveedor=new Proveedores($request->all());
+      $proveedor->save();
+      return redirect()->back();
         //
     }
 
@@ -56,7 +63,10 @@ class ProveedoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proveedor = Proveedores::find($id);
+       
+        return view('proveedores.editar',compact($proveedor));
+   //
     }
 
     /**
@@ -68,7 +78,11 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proveedor = Proveedores::find($id);
+        $proveedor->fill($request->all());
+        $proveedor->save();
+        return redirect()->back();
+ //
     }
 
     /**
@@ -79,6 +93,10 @@ class ProveedoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proveedor = Proveedores::find($id);
+        $proveedor->delete();
+       
+        return redirect()->back();
+  //
     }
 }

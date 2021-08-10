@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Models\Tienda;
 use Illuminate\Http\Request;
 
 class TiendasController extends Controller
@@ -13,7 +12,10 @@ class TiendasController extends Controller
      */
     public function index()
     {
-        //
+        $tienda = Tienda::all();
+       
+        return view('tienda.listar');
+ //
     }
 
     /**
@@ -23,6 +25,7 @@ class TiendasController extends Controller
      */
     public function create()
     {
+        return view('tienda.crear');
         //
     }
 
@@ -34,6 +37,9 @@ class TiendasController extends Controller
      */
     public function store(Request $request)
     {
+      $tienda=new Tienda($request->all());
+      $tienda->save();
+      return redirect()->back();
         //
     }
 
@@ -56,7 +62,10 @@ class TiendasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tienda = Tienda::find($id);
+       
+        return view('tienda.editar',compact($tienda));
+   //
     }
 
     /**
@@ -68,7 +77,11 @@ class TiendasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tienda = Tienda::find($id);
+        $tienda->fill($request->all());
+        $tienda->save();
+        return redirect()->back();
+ //
     }
 
     /**
@@ -79,6 +92,10 @@ class TiendasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tienda = Tienda::find($id);
+        $tienda->delete();
+       
+        return redirect()->back();
+  //
     }
 }
