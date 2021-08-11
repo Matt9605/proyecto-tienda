@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use App\Models\Proveedores;
+use App\Models\Tienda;
 
 class ProductosController extends Controller
 {
@@ -13,9 +15,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $producto = Productos::all();
+        $productos = Productos::all();
        
-        return view('productos.listar');
+        return view('productos.listar',compact('productos'));
  //
     }
 
@@ -26,7 +28,9 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        return view('productos.crear');
+        $proveedores = Proveedores::all();
+        $tiendas = Tienda::all();
+        return view('productos.crear',compact('proveedores','tiendas'));
         //
     }
 
@@ -40,7 +44,7 @@ class ProductosController extends Controller
     {
       $producto=new Productos($request->all());
       $producto->save();
-      return redirect()->back();
+      return redirect('/productos');
         //
     }
 
@@ -64,8 +68,9 @@ class ProductosController extends Controller
     public function edit($id)
     {
         $producto = Productos::find($id);
-       
-        return view('productos.editar',compact($producto));
+        $proveedores = Proveedores::all();
+        $tiendas = Tienda::all();
+        return view('productos.editar',compact('producto','proveedores','tiendas'));
    //
     }
 
@@ -81,7 +86,7 @@ class ProductosController extends Controller
         $producto = Productos::find($id);
         $producto->fill($request->all());
         $producto->save();
-        return redirect()->back();
+        return redirect('/productos');
  //
     }
 
@@ -96,7 +101,7 @@ class ProductosController extends Controller
         $producto = Productos::find($id);
         $producto->delete();
        
-        return redirect()->back();
+        return redirect('/productos');
   //
     }
 }

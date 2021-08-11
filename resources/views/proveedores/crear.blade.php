@@ -23,7 +23,7 @@
 
                         <div class="form-group">
                           <label for="nombres">Nombres</label>
-                          <input type="text" class="form-control" id="nombres" name="nombres">
+                          <input type="text" class="form-control" id="nombres" name="nombre">
                         </div>
                         <div class="form-group">
                             <label for="nombres">Nit</label>
@@ -33,7 +33,10 @@
                             <label for="nombres">Telefono</label>
                             <input type="text" class="form-control" id="telefono" name="telefono">
                           </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                         
+
+
+                        <button type="submit" class="btn btn-primary">Crear</button>
                       </form>
                      
                    

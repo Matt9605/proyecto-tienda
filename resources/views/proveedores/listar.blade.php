@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="card-body">
-                <table>
+                <table class="table">
                         <thead>
                             <th>
                                 Nombres
@@ -34,7 +34,7 @@
                             @foreach($proveedores as $key => $proveedor)
                             <tr>
                                 <td>
-                                    {{$proveedor->nombres}}
+                                    {{$proveedor->nombre}}
                                 </td>
                                 <td>
                                     {{$proveedor->nit}}

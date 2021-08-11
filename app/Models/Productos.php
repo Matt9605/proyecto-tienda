@@ -9,5 +9,13 @@ class Productos extends Model
 {
     use HasFactory;
     protected $table= "productos";
-    protected $fillable= ["marca","precio","stock"];
+    protected $fillable= ["marca","precio","stock",'proveedor_id','tienda_id'];
+
+    public function tienda(){
+        return $this->belongsTo(Tienda::class);
+    }
+    
+    public function proveedor(){
+        return $this->belongsTo(Proveedores::class);
+    }
 }

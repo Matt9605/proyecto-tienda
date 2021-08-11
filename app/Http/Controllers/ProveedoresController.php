@@ -13,9 +13,9 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $proveedor = Proveedores::all();
+        $proveedores = Proveedores::all();
        
-        return view('proveedores.listar');
+        return view('proveedores.listar',compact('proveedores'));
  //
     }
 
@@ -40,7 +40,7 @@ class ProveedoresController extends Controller
     {
       $proveedor=new Proveedores($request->all());
       $proveedor->save();
-      return redirect()->back();
+      return redirect('/proveedores');
         //
     }
 
@@ -65,7 +65,7 @@ class ProveedoresController extends Controller
     {
         $proveedor = Proveedores::find($id);
        
-        return view('proveedores.editar',compact($proveedor));
+        return view('proveedores.editar',compact('proveedor'));
    //
     }
 
@@ -81,7 +81,7 @@ class ProveedoresController extends Controller
         $proveedor = Proveedores::find($id);
         $proveedor->fill($request->all());
         $proveedor->save();
-        return redirect()->back();
+        return redirect('/proveedores');
  //
     }
 
@@ -96,7 +96,7 @@ class ProveedoresController extends Controller
         $proveedor = Proveedores::find($id);
         $proveedor->delete();
        
-        return redirect()->back();
+        return redirect('/proveedores');
   //
     }
 }

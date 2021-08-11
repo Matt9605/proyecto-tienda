@@ -32,6 +32,24 @@
                             <label for="stock">Stock</label>
                             <input type="text" class="form-control" id="stock" name="stock">
                           </div>
+                          <div class="form-group">
+                            <label for="nombres">Proveedor</label>
+                            <select class="form-control" name="proveedor_id" id="proveedor_id">
+                              <option value="">Seleccione</option>
+                              @foreach ($proveedores as $proveedor)
+                                  <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="nombres">Tienda</label>
+                            <select class="form-control" name="tienda_id" id="tienda_id">
+                              <option value="">Seleccione</option>
+                              @foreach ($tiendas as $tienda)
+                                  <option value="{{$tienda->id}}">{{$tienda->nombre}}</option>
+                              @endforeach
+                            </select>
+                          </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                       </form>
                      

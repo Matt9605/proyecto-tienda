@@ -18,18 +18,38 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action ="/productos/{{$productos->id}}">
+                    <form method="POST" action ="/productos/{{$producto->id}}">
+                      @csrf
+                      @method('put')
                         <div class="form-group">
                           <label for="marca">Marca</label>
-                          <input value="{{$productos->marca}}" type="text" class="form-control" id="marca" name="marca">
+                          <input value="{{$producto->marca}}" type="text" class="form-control" id="marca" name="marca">
                         </div>
                         <div class="form-group">
                             <label for="precio">Precio</label>
-                            <input value="{{$productos->precio}}" type="text" class="form-control" id="precio" name="precio">
+                            <input value="{{$producto->precio}}" type="text" class="form-control" id="precio" name="precio">
                           </div>
                           <div class="form-group">
                             <label for="stock">Stock</label>
-                            <input value="{{$productos->stock}}" type="text" class="form-control" id="stock" name="stock">
+                            <input value="{{$producto->stock}}" type="text" class="form-control" id="stock" name="stock">
+                          </div>
+                          <div class="form-group">
+                            <label for="nombres">Proveedor</label>
+                            <select class="form-control" name="proveedor_id" id="proveedor_id">
+                              <option value="">Seleccione</option>
+                              @foreach ($proveedores as $proveedor)
+                                  <option {{$proveedor->id == $producto->proveedor_id ? 'selected' : ''}} value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="nombres">Tienda</label>
+                            <select class="form-control" name="tienda_id" id="tienda_id">
+                              <option value="">Seleccione</option>
+                              @foreach ($tiendas as $tienda)
+                                  <option  {{$tienda->id == $producto->tienda_id ? 'selected' : ''}}  value="{{$tienda->id}}">{{$tienda->nombre}}</option>
+                              @endforeach
+                            </select>
                           </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                       </form>

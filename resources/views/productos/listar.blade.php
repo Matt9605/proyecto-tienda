@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="card-body">
-                <table>
+                <table class="table">
                         <thead>
                             <th>
                                 Marca
@@ -29,22 +29,36 @@
                             <th>
                                 Stock
                             </th>
+                            <th>
+                                Proveedor
+                            </th>
+                            <th>
+                                Tienda
+                            </th>
+                          
+                          
                         </thead>
                         <tbody>
-                            @foreach($productos as $key => $productos)
+                            @foreach($productos as $key => $producto)
                             <tr>
                                 <td>
-                                    {{$productos->marca}}
+                                    {{$producto->marca}}
                                 </td>
                                 <td>
-                                    {{$productos->precio}}
+                                    {{$producto->precio}}
                                 </td>
                                 <td>
-                                    {{$productos->stock}}
+                                    {{$producto->stock}}
                                 </td>
                                 <td>
-                                    <a class="btn btn-success" href="/productos/{{$productos->id}}/edit">Editar</a>
-                                    <a class="btn btn-danger" href="/productos/{{$productos->id}}/eliminar">Eliminar</a>
+                                    {{$producto->proveedor->nombre}}
+                                </td>
+                                <td>
+                                    {{$producto->tienda->nombre}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="/productos/{{$producto->id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" href="/productos/{{$producto->id}}/eliminar">Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach

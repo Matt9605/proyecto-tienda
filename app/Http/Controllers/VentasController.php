@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 namespace App\Http\Controllers;
 use App\Models\Venta;
 use Illuminate\Http\Request;
+use App\Models\Tienda;
+use App\Models\Productos;
 
 class VentasController extends Controller
 {
@@ -14,9 +16,9 @@ class VentasController extends Controller
      */
     public function index()
     {
-        $venta = Venta::all();
+        $ventas = Venta::all();
        
-        return view('venta.listar');
+        return view('venta.listar',compact('ventas'));
  //
     }
 
@@ -27,7 +29,9 @@ class VentasController extends Controller
      */
     public function create()
     {
-        return view('venta.crear');
+        $tiendas = Tienda::all();
+        $productos = Productos::all();
+        return view('venta.crear',compact('tiendas','productos'));
         //
     }
 
@@ -39,9 +43,21 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-        $venta=new Venta($request->all());
+      // dd($request->all());
+       $request['vendedor_id'] = \Auth::user()->id;
+        $venta=new Venta($request->except([
+            'producto_id',
+            'cantidad',
+            'total',
+            'valor'
+        ]));
         $venta->save();
-      return redirect()->back();
+        foreach ($request->producto_id as $key => $producto) {
+            $venta->productos()->attach($producto,[
+                'cantidad'=>$request->cantidad[$key]
+            ]);
+        }
+        return redirect('/ventas');
         //
     }
 

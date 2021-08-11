@@ -12,9 +12,9 @@ class TiendasController extends Controller
      */
     public function index()
     {
-        $tienda = Tienda::all();
+        $tiendas = Tienda::all();
        
-        return view('tienda.listar');
+        return view('tienda.listar',compact('tiendas'));
  //
     }
 
@@ -39,7 +39,7 @@ class TiendasController extends Controller
     {
       $tienda=new Tienda($request->all());
       $tienda->save();
-      return redirect()->back();
+      return redirect('/tiendas');
         //
     }
 
@@ -64,7 +64,7 @@ class TiendasController extends Controller
     {
         $tienda = Tienda::find($id);
        
-        return view('tienda.editar',compact($tienda));
+        return view('tienda.editar',compact('tienda'));
    //
     }
 
@@ -80,7 +80,7 @@ class TiendasController extends Controller
         $tienda = Tienda::find($id);
         $tienda->fill($request->all());
         $tienda->save();
-        return redirect()->back();
+        return redirect('/tiendas');
  //
     }
 
@@ -95,7 +95,7 @@ class TiendasController extends Controller
         $tienda = Tienda::find($id);
         $tienda->delete();
        
-        return redirect()->back();
+        return redirect('/tiendas');
   //
     }
 }

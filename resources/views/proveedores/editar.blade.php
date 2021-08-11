@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                           <label for="nombres">Nombres</label>
-                          <input value="{{$proveedor->nombres}}" type="text" class="form-control" id="nombres" name="nombres">
+                          <input value="{{$proveedor->nombre}}" type="text" class="form-control" id="nombres" name="nombre">
                         </div>
                         <div class="form-group">
                             <label for="nombres">Nit</label>

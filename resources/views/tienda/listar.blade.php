@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="card-body">
-                <table>
+                <table class="table">
                         <thead>
                             <th>
                                 Nombre
@@ -31,20 +31,20 @@
                             </th>
                         </thead>
                         <tbody>
-                            @foreach($tiendas as $key => $tiendas)
+                            @foreach($tiendas as $key => $tienda)
                             <tr>
                                 <td>
-                                    {{$tiendas->nombre}}
+                                    {{$tienda->nombre}}
                                 </td>
                                 <td>
-                                    {{$tiendas->nit}}
+                                    {{$tienda->direccion}}
                                 </td>
                                 <td>
-                                    {{$tiendas->telefono}}
+                                    {{$tienda->telefono}}
                                 </td>
                                 <td>
-                                    <a class="btn btn-success" href="/tienda/{{$tienda->id}}/edit">Editar</a>
-                                    <a class="btn btn-danger" href="/tienda/{{$tienda->id}}/eliminar">Eliminar</a>
+                                    <a class="btn btn-success" href="/tiendas/{{$tienda->id}}/edit">Editar</a>
+                                    <a class="btn btn-danger" href="/tiendas/{{$tienda->id}}/eliminar">Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach

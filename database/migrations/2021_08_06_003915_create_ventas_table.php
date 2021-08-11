@@ -18,10 +18,18 @@ class CreateVentasTable extends Migration
             $table->string('numero_factura');
             $table->string('fecha');
             $table->string('valor_venta');
-            $table->integer('vendendor_id');
+            $table->integer('vendedor_id');
             $table->integer('tienda_id');
             $table->timestamps();
         });
+
+        Schema::create('ventas_productos', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('cantidad');             
+            $table->integer('producto_id')->unsigned();
+            $table->integer('venta_id')->unsigned();
+            $table->timestamps();
+        }); 
     }
 
     /**
